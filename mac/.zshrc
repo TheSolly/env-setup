@@ -1,9 +1,10 @@
 # =============================================================================
 #                                   My Settings
 # =============================================================================
-
+export TERM="xterm-256color"
 source ~/.nvm/nvm.sh
 ENABLE_CORRECTION="true"
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 
 # =============================================================================
@@ -35,6 +36,12 @@ zsh_wifi_signal(){
                 # echo -n "%{$color%}$ssid $speed Mb/s%{%f%}" # removed char not in my PowerLine font 
                 echo -n "%{$color%}$ssid" # removed char not in my PowerLine font 
         fi
+}
+
+function commit() {
+  git add .
+  git commit -m "$1"
+  # git push
 }
 
 # =============================================================================
@@ -229,25 +236,20 @@ alias egrep='() { $(whence -p egrep) --color=auto $@ }'
 alias ccat='highlight -O ansi'
 alias rm='rm -v'
 
-# Directory management
+# My aliases
 alias iphone='open -a Simulator.app'
 alias cd..='cd ..'
 alias root='cd ~'
-alias la='ls -a'
-alias ll='ls -l'
-alias lal='ls -al'
-alias d='dirs -v'
-alias 1='pu'
-alias 2='pu -2'
-alias 3='pu -3'
-alias 4='pu -4'
-alias 5='pu -5'
-alias 6='pu -6'
-alias 7='pu -7'
-alias 8='pu -8'
-alias 9='pu -9'
-alias pu='() { pushd $1 &> /dev/null; dirs -v; }'
-alias po='() { popd &> /dev/null; dirs -v; }'
+alias RN='react-native'
+alias http='httpsc'
+# alias commit='git add . && git commit'
+alias myip='curl http://ipecho.net/plain; echo'
+alias reload='source ~/.zshrc'
+alias y='yarn'
+alias zshconfig='code-insiders ~/.zshrc'
+alias server='python -m SimpleHTTPServer 8000'
+alias brewu='brew update && brew upgrade && brew cask upgrade'
+
 
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
@@ -418,7 +420,7 @@ if zplug check "bhilburn/powerlevel9k"; then
     #DEFAULT_USER=$USER
 
     POWERLEVEL9K_MODE="nerdfont-complete"
-    POWERLEVEL9K_SHORTEN_DIR_LENGTH=10
+    POWERLEVEL9K_SHORTEN_DIR_LENGTH=30
     POWERLEVEL9K_SHORTEN_STRATEGY="truncate_absolute"
 
     POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=false
@@ -459,9 +461,11 @@ if zplug check "bhilburn/powerlevel9k"; then
     #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context ssh root_indicator dir_writable dir )
     #POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator context dir_writable dir vcs)
     # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir_writable dir vcs)
+    # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
     # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time background_jobs status time ssh)
-    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
-    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time time battery custom_wifi_signal) 
+    # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time time battery custom_wifi_signal) 
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon vcs)
+    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs command_execution_time custom_wifi_signal) 
 
     POWERLEVEL9K_VCS_CLEAN_BACKGROUND="green"
     POWERLEVEL9K_VCS_CLEAN_FOREGROUND="$DEFAULT_BACKGROUND"
@@ -469,10 +473,14 @@ if zplug check "bhilburn/powerlevel9k"; then
     POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="$DEFAULT_BACKGROUND"
     POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="magenta"
     POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="$DEFAULT_BACKGROUND"
-    POWERLEVEL9K_VCS_SHORTEN_LENGTH=8
-    POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=11
+    POWERLEVEL9K_VCS_SHORTEN_LENGTH=20
+    POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=30
     POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
     POWERLEVEL9K_VCS_SHORTEN_DELIMITER=".."
+    POWERLEVEL9K_VCS_GIT_GITHUB_ICON=""
+    POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=""
+    POWERLEVEL9K_VCS_GIT_GITLAB_ICON=""
+    POWERLEVEL9K_VCS_GIT_ICON=""
 
     POWERLEVEL9K_DIR_HOME_BACKGROUND="$DEFAULT_FOREGROUND"
     POWERLEVEL9K_DIR_HOME_FOREGROUND="$DEFAULT_BACKGROUND"
@@ -500,10 +508,7 @@ if zplug check "bhilburn/powerlevel9k"; then
     POWERLEVEL9K_TIME_FOREGROUND="$DEFAULT_FOREGROUND"
     POWERLEVEL9K_TIME_BACKGROUND="$DEFAULT_BACKGROUND"
 
-    POWERLEVEL9K_VCS_GIT_GITHUB_ICON=""
-    POWERLEVEL9K_VCS_GIT_BITBUCKET_ICON=""
-    POWERLEVEL9K_VCS_GIT_GITLAB_ICON=""
-    POWERLEVEL9K_VCS_GIT_ICON=""
+    
 
     POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND="$DEFAULT_BACKGROUND"
     POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND="$DEFAULT_FOREGROUND"
@@ -588,3 +593,11 @@ zplug load
 
 # vim: ft=zsh
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.fastlane/bin:$PATH"
+# export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_HOME=/usr/local/Caskroom/android-sdk/4333796
+
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
