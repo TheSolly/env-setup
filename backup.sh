@@ -40,3 +40,8 @@ fi
 git add -u;
 git commit -m "New backup `date +'%Y-%m-%d %H:%M:%S'`";
 git push origin master
+
+# do a cornjobs
+# crontab -e 
+# “At every minute on Monday.”
+# * * * * 1 cd /Users/solly-macbook/Documents/env-setup/ && ./backup.sh
