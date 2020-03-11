@@ -28,7 +28,7 @@ cp  $HOME/{.zshrc,.vimrc,.bash_profile,.tmux.conf} .
 
 # Check git status
 gs="$(git status | grep -i "modified")"
-# echo "${gs}"
+echo "${gs}"
 
 # If there is a new change
 if [[ $gs == *"modified"* ]]; then
