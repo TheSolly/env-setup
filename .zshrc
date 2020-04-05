@@ -4,8 +4,6 @@
 export TERM="xterm-256color"
 source ~/.nvm/nvm.sh
 ENABLE_CORRECTION="true"
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-
 
 # =============================================================================
 #                                   Functions
@@ -40,7 +38,8 @@ zsh_wifi_signal(){
 
 function commit() {
   git add .
-  git commit -m "$1"
+  git commit
+  # git commit -m "$1"
   # git push
 }
 
@@ -250,7 +249,7 @@ alias zshconfig='code-insiders ~/.zshrc'
 alias server='python -m SimpleHTTPServer 8000'
 alias brewu='brew update && brew upgrade && brew cask upgrade'
 alias codei='code-insiders'
-
+alias gco='git checkout'
 
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
@@ -602,3 +601,7 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
