@@ -22,7 +22,7 @@ fi
 # code-insiders --list-extensions --show-versions >> ../../vscode/extensions.txt
 
 # copy other dot files 
-cp  $HOME/{.zshrc,.vimrc,.bash_profile,.tmux.conf} .
+cp  $HOME/{.zshrc,.vimrc,.bash_profile,.tmux.conf,.p10k.zsh} .
 
 
 
