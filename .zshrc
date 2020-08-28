@@ -106,7 +106,6 @@ zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
 # zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
-
 zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/colorize",          from:oh-my-zsh
@@ -611,11 +610,12 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 export THEOS=~/theos
 export THEOS_DEVICE_IP=192.168.2.83
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
