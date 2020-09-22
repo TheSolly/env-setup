@@ -123,6 +123,7 @@ zplug "plugins/urltools",          from:oh-my-zsh
 zplug "plugins/web-search",        from:oh-my-zsh
 zplug "plugins/z",                 from:oh-my-zsh
 zplug "plugins/fancy-ctrl-z",      from:oh-my-zsh
+zplug "plugins/zsh-background-notify", from:oh-my-zsh
 
 # Supports oh-my-zsh plugins and the like
 if [[ $OSTYPE = (linux)* ]]; then
@@ -255,7 +256,7 @@ alias reload='source ~/.zshrc'
 alias y='yarn'
 alias zshconfig='code-insiders ~/.zshrc'
 alias server='python -m SimpleHTTPServer 8000'
-alias brewu='brew update && brew upgrade && brew cask upgrade'
+alias brewu='brew update && brew upgrade --cask && brew upgrade'
 alias codei='code-insiders -n'
 alias gco='git checkout'
 
