@@ -124,6 +124,7 @@ zplug "plugins/web-search",        from:oh-my-zsh
 zplug "plugins/z",                 from:oh-my-zsh
 zplug "plugins/fancy-ctrl-z",      from:oh-my-zsh
 zplug "plugins/zsh-background-notify", from:oh-my-zsh
+# zplug "lib/*",                     from:oh-my-zsh
 
 # Supports oh-my-zsh plugins and the like
 if [[ $OSTYPE = (linux)* ]]; then
@@ -258,7 +259,16 @@ alias zshconfig='code-insiders ~/.zshrc'
 alias server='python -m SimpleHTTPServer 8000'
 alias brewu='brew update && brew upgrade --cask && brew upgrade'
 alias codei='code-insiders -n'
+alias restartvb='sudo /Library/Application\ Support/VirtualBox/LaunchDaemons/VirtualBoxStartup.sh restart'
+# git
+alias releaseios='git tag ios-staging -f && git push --tags -f'
 alias gco='git checkout'
+alias wip='git add . && git commit --no-verify -m "WIP: auto save at $(date "+%Y%m%d %H:%M:%S")"'
+alias unstage='git reset HEAD --'
+alias uncommit='git reset --soft HEAD~1'
+alias recommit='git commit --amend --no-edit'
+alias save='git stash save'
+alias pop='git stash pop'
 
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 
@@ -603,8 +613,8 @@ zplug load
 # vim: ft=zsh
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/.fastlane/bin:$PATH"
-# export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_HOME=/usr/local/Caskroom/android-sdk/4333796
+export ANDROID_HOME=$HOME/Library/Android/sdk
+# export ANDROID_HOME=/usr/local/Caskroom/android-sdk/4333796
 
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
