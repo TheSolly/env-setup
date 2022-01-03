@@ -1,3 +1,8 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -9,7 +14,6 @@ fi
 #                                   My Settings
 # =============================================================================
 export TERM="xterm-256color"
-source ~/.nvm/nvm.sh
 ENABLE_CORRECTION="true"
 
 # =============================================================================
@@ -80,9 +84,10 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 #zplug "andrewferrier/fzf-z"
 zplug "k4rthik/git-cal",  as:command
 zplug "peco/peco",        as:command, from:gh-r
-zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, \
-	use:"*${(L)$(uname -s)}*amd64*"
-zplug "junegunn/fzf", use:"shell/*.zsh", as:plugin
+# NOTE: i installed fzf through brew for better keybinding 
+# zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, \
+# 	use:"*${(L)$(uname -s)}*amd64*"
+# zplug "junegunn/fzf", use:"shell/*.zsh", as:plugin
 
 # Enhanced cd
 zplug "b4b4r07/enhancd", use:init.sh
@@ -124,7 +129,7 @@ zplug "plugins/web-search",        from:oh-my-zsh
 zplug "plugins/z",                 from:oh-my-zsh
 zplug "plugins/fancy-ctrl-z",      from:oh-my-zsh
 zplug "plugins/zsh-background-notify", from:oh-my-zsh
-# zplug "lib/*",                     from:oh-my-zsh
+zplug "lib/*",                     from:oh-my-zsh
 
 # Supports oh-my-zsh plugins and the like
 if [[ $OSTYPE = (linux)* ]]; then
@@ -134,7 +139,7 @@ fi
 
 if [[ $OSTYPE = (darwin)* ]]; then
     zplug "lib/clipboard",         from:oh-my-zsh
-    zplug "plugins/osx",           from:oh-my-zsh
+    zplug "plugins/macos",           from:oh-my-zsh
     zplug "plugins/brew",          from:oh-my-zsh, if:"(( $+commands[brew] ))"
     zplug "plugins/macports",      from:oh-my-zsh, if:"(( $+commands[port] ))"
 fi
@@ -163,6 +168,7 @@ zplug "zsh-users/zsh-autosuggestions"
 # and sourcing other plugins
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
+zplug 'wfxr/forgit'
 
 # =============================================================================
 #                                   Options
@@ -286,8 +292,8 @@ bindkey "^d" delete-char
 bindkey "^y" accept-and-hold
 bindkey "^w" backward-kill-word
 bindkey "^u" backward-kill-line
-bindkey "^R" history-incremental-pattern-search-backward
-bindkey "^F" history-incremental-pattern-search-forward
+# bindkey "^R" history-incremental-pattern-search-backward
+# bindkey "^F" history-incremental-pattern-search-forward
 
 # Do not require a space when attempting to tab-complete.
 bindkey "^i" expand-or-complete-prefix
@@ -630,3 +636,15 @@ export THEOS_DEVICE_IP=192.168.2.83
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
