@@ -115,7 +115,7 @@ zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/colorize",          from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
-zplug "plugins/copydir",           from:oh-my-zsh
+zplug "plugins/copypath",          from:oh-my-zsh
 zplug "plugins/copyfile",          from:oh-my-zsh
 zplug "plugins/cp",                from:oh-my-zsh
 zplug "plugins/dircycle",          from:oh-my-zsh
