@@ -1,8 +1,5 @@
-
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -64,6 +61,8 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse --border --inline-info --color=d
 
 export ENHANCD_FILTER="fzf:peco:percol"
 export ENHANCD_COMMAND='c'
+export GITHUB_TOKEN="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"
+
 
 # =============================================================================
 #                                   Plugins
@@ -82,8 +81,8 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 # Miscellaneous commands
 #zplug "andrewferrier/fzf-z"
-zplug "k4rthik/git-cal",  as:command
-zplug "peco/peco",        as:command, from:gh-r
+# zplug "k4rthik/git-cal",  as:command
+# zplug "peco/peco",        as:command, from:gh-r
 # NOTE: i installed fzf through brew for better keybinding 
 # zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, \
 # 	use:"*${(L)$(uname -s)}*amd64*"
@@ -93,16 +92,16 @@ zplug "peco/peco",        as:command, from:gh-r
 zplug "b4b4r07/enhancd", use:init.sh
 
 # Bookmarks and jump
-zplug "jocelynmallon/zshmarks"
+# zplug "jocelynmallon/zshmarks"
 
 # Enhanced dir list with git features
 zplug "supercrabtree/k"
 
 # Jump back to parent directory
-zplug "tarrasch/zsh-bd"
+# zplug "tarrasch/zsh-bd"
 
 # Simple zsh calculator
-zplug "arzzen/calc.plugin.zsh"
+# zplug "arzzen/calc.plugin.zsh"
 
 # Directory colors
 zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
@@ -145,22 +144,22 @@ if [[ $OSTYPE = (darwin)* ]]; then
 fi
 
 zplug "plugins/git",               from:oh-my-zsh, if:"(( $+commands[git] ))"
-zplug "plugins/golang",            from:oh-my-zsh, if:"(( $+commands[go] ))"
-zplug "plugins/svn",               from:oh-my-zsh, if:"(( $+commands[svn] ))"
+# zplug "plugins/golang",            from:oh-my-zsh, if:"(( $+commands[go] ))"
+# zplug "plugins/svn",               from:oh-my-zsh, if:"(( $+commands[svn] ))"
 zplug "plugins/node",              from:oh-my-zsh, if:"(( $+commands[node] ))"
 zplug "plugins/npm",               from:oh-my-zsh, if:"(( $+commands[npm] ))"
-zplug "plugins/bundler",           from:oh-my-zsh, if:"(( $+commands[bundler] ))"
-zplug "plugins/gem",               from:oh-my-zsh, if:"(( $+commands[gem] ))"
-zplug "plugins/rbenv",             from:oh-my-zsh, if:"(( $+commands[rbenv] ))"
-zplug "plugins/rvm",               from:oh-my-zsh, if:"(( $+commands[rvm] ))"
-zplug "plugins/pip",               from:oh-my-zsh, if:"(( $+commands[pip] ))"
-zplug "plugins/sudo",              from:oh-my-zsh, if:"(( $+commands[sudo] ))"
-zplug "plugins/gpg-agent",         from:oh-my-zsh, if:"(( $+commands[gpg-agent] ))"
-zplug "plugins/systemd",           from:oh-my-zsh, if:"(( $+commands[systemctl] ))"
-zplug "plugins/docker",            from:oh-my-zsh, if:"(( $+commands[docker] ))"
-zplug "plugins/docker-compose",    from:oh-my-zsh, if:"(( $+commands[docker-compose] ))"
+# zplug "plugins/bundler",           from:oh-my-zsh, if:"(( $+commands[bundler] ))"
+# zplug "plugins/gem",               from:oh-my-zsh, if:"(( $+commands[gem] ))"
+# zplug "plugins/rbenv",             from:oh-my-zsh, if:"(( $+commands[rbenv] ))"
+# zplug "plugins/rvm",               from:oh-my-zsh, if:"(( $+commands[rvm] ))"
+# zplug "plugins/pip",               from:oh-my-zsh, if:"(( $+commands[pip] ))"
+# zplug "plugins/sudo",              from:oh-my-zsh, if:"(( $+commands[sudo] ))"
+# zplug "plugins/gpg-agent",         from:oh-my-zsh, if:"(( $+commands[gpg-agent] ))"
+# zplug "plugins/systemd",           from:oh-my-zsh, if:"(( $+commands[systemctl] ))"
+# zplug "plugins/docker",            from:oh-my-zsh, if:"(( $+commands[docker] ))"
+# zplug "plugins/docker-compose",    from:oh-my-zsh, if:"(( $+commands[docker-compose] ))"
 
-#zplug "djui/alias-tips"
+zplug "djui/alias-tips"
 zplug "hlissner/zsh-autopair", defer:2
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-autosuggestions"
@@ -168,7 +167,7 @@ zplug "zsh-users/zsh-autosuggestions"
 # and sourcing other plugins
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
-zplug 'wfxr/forgit'
+# zplug 'wfxr/forgit'
 
 # =============================================================================
 #                                   Options
@@ -637,10 +636,7 @@ export THEOS_DEVICE_IP=192.168.2.83
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
+
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
@@ -648,3 +644,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH=$HOME/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/solly-macbook/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/solly-macbook/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/solly-macbook/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/solly-macbook/google-cloud-sdk/completion.zsh.inc'; fi
