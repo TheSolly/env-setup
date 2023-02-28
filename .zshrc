@@ -647,11 +647,11 @@ export NVM_DIR="$HOME/.nvm"
 
 export PATH=$HOME/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/solly-macbook/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/solly-macbook/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/solly-macbook/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/solly-macbook/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
