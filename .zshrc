@@ -63,7 +63,6 @@ export ENHANCD_FILTER="fzf:peco:percol"
 export ENHANCD_COMMAND='c'
 export GITHUB_TOKEN="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"
 
-
 # =============================================================================
 #                                   Plugins
 # =============================================================================
@@ -634,9 +633,6 @@ export THEOS_DEVICE_IP=192.168.2.83
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
@@ -652,6 +648,9 @@ if [ -f '/Users/solly-macbook/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/solly-macbook/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/solly-macbook/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
