@@ -14,7 +14,7 @@ eval “export PATH="/Users/solly-macbook/.jenv/shims:${PATH}" source "/usr/loca
 # RVM can encounter errors if it's not the last thing in .bash_profile
 export PATH="$GEM_HOME/bin:$PATH"
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/bash_profile.post.bash" ]] && builtin source "$HOME/.fig/shell/bash_profile.post.bash"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
